@@ -1,6 +1,6 @@
 import neovim
 import os
-from checker import check
+import sys
 
 @neovim.plugin
 class AlgoTestPlugin(object):
@@ -10,9 +10,6 @@ class AlgoTestPlugin(object):
 
     @neovim.command('CheckSolution', nargs='1')
     def command(self, pythonfile):
-        dirname = os.path.dirname(pythonfile)
-        inputfile = os.path.join(dirname, 'input.txt')
-        outputfile = os.path.join(dirname, 'output.txt')
-
-        check(pythonfile, inputfile, outputfile)
+        print('asdf')
+        print(__file__)
 
