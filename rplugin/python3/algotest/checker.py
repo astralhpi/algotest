@@ -13,34 +13,36 @@ def check(pythonfile, inputfile, outputfile):
     p = Popen(['python', pythonfile], stdin=PIPE, stdout=PIPE, stderr=PIPE)
     
     start_time = time.time()
-    stdout, stderr = p.communicate(input)
+    stdout, stderr = p.communicate(bytes(input, 'utf-8'))
+    stdout = str(stdout, 'utf-8')
+    stderr = str(stderr, 'utf-8')
     end_time = time.time()
 
     result = ''
     
-    result += ('=' * 30)
-    result += ('input')
-    result += ('=' * 30)
-    result += (input)
-    result += ('=' * 30)
-    result += ('expected output')
-    result += ('=' * 30)
-    result += (output)
-    result += ('=' * 30)
-    result += ('output')
-    result += ('=' * 30)
-    result += (stdout)
-    result += ('=' * 30)
-    result += ('run time: %f' % (end_time-start_time))
-    result += ('=' * 30)
+    result += '=' * 30 + '\n'
+    result += 'input\n'
+    result += '=' * 30 + '\n'
+    result += input + '\n'
+    result += '=' * 30 + '\n'
+    result += 'expected output' + '\n'
+    result += '=' * 30 + '\n'
+    result += output + '\n'
+    result += '=' * 30 + '\n'
+    result += 'output' + '\n'
+    result += '=' * 30 + '\n'
+    result += stdout + '\n'
+    result += '=' * 30 + '\n'
+    result += 'run time: %f' % (end_time-start_time) + '\n'
+    result += '=' * 30 + '\n'
     if stdout.strip() == output.strip():
-        result += ('succeed!')
+        result += 'succeed!' + '\n'
     elif stderr is not None and len(stderr) > 0:
-        result += ('error!')
-        result += ('=' * 30)
-        result += (stderr)
+        result += 'error!' + '\n'
+        result += '=' * 30 + '\n'
+        result += stderr + '\n'
     else:
-        result += ('failed!')
+        result += 'failed!' + '\n'
 
     return result
 
