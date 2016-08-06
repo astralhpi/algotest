@@ -1,6 +1,5 @@
 import neovim
 import os
-import checker
 
 @neovim.plugin
 class AlgoTestPlugin(object):
@@ -10,6 +9,7 @@ class AlgoTestPlugin(object):
 
     @neovim.command('CheckSolution', nargs='*')
     def command(self, args):
+        import checker
         for filename in args:
             dirname = os.path.dirname(filename)
             inputfile = os.path.join(dirname, 'input.txt')
