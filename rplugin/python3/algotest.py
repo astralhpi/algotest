@@ -10,5 +10,5 @@ class AlgoTestPlugin(object):
 
     @neovim.command('CheckSolution', nargs='1')
     def command(self, pythonfile):
-        self.nvim.call('echo "%s"' % __file__)
+        self.nvim.command('echo "%s"' % __file__)
 
