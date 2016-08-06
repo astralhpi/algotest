@@ -10,6 +10,5 @@ class AlgoTestPlugin(object):
 
     @neovim.command('CheckSolution', nargs='1')
     def command(self, pythonfile):
-        print('asdf')
-        print(__file__)
+        self.nvim.call('echo "%s"' % __file__)
 
