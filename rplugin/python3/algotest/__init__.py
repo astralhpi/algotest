@@ -10,6 +10,10 @@ class AlgoTestPlugin(object):
 
     @neovim.command('CheckSolution', nargs='*')
     def command(self, args):
+
+        if len(args) == 0:
+            args = [self.nvim.current.buffer.name]
+
         for filename in args:
             dirname = os.path.dirname(filename)
             inputfile = os.path.join(dirname, 'input.txt')
