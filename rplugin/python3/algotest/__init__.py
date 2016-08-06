@@ -1,5 +1,6 @@
 import neovim
 import os
+from .checker import check
 
 @neovim.plugin
 class AlgoTestPlugin(object):
@@ -15,7 +16,7 @@ class AlgoTestPlugin(object):
             inputfile = os.path.join(dirname, 'input.txt')
             outputfile = os.path.join(dirname, 'output.txt')
 
-            result = checker.check(filename, inputfile, outputfile)
+            result = check(filename, inputfile, outputfile)
 
             self.nvim.command('echo "%s"' % result)
 
