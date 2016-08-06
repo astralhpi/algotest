@@ -15,30 +15,34 @@ def check(pythonfile, inputfile, outputfile):
     start_time = time.time()
     stdout, stderr = p.communicate(input)
     end_time = time.time()
+
+    result = ''
     
-    print('=' * 30)
-    print('input')
-    print('=' * 30)
-    print(input)
-    print('=' * 30)
-    print('expected output')
-    print('=' * 30)
-    print(output)
-    print('=' * 30)
-    print('output')
-    print('=' * 30)
-    print(stdout)
-    print('=' * 30)
-    print('run time: %f' % (end_time-start_time))
-    print('=' * 30)
+    result += ('=' * 30)
+    result += ('input')
+    result += ('=' * 30)
+    result += (input)
+    result += ('=' * 30)
+    result += ('expected output')
+    result += ('=' * 30)
+    result += (output)
+    result += ('=' * 30)
+    result += ('output')
+    result += ('=' * 30)
+    result += (stdout)
+    result += ('=' * 30)
+    result += ('run time: %f' % (end_time-start_time))
+    result += ('=' * 30)
     if stdout.strip() == output.strip():
-        print('succeed!')
+        result += ('succeed!')
     elif stderr is not None and len(stderr) > 0:
-        print('error!')
-        print('=' * 30)
-        print(stderr)
+        result += ('error!')
+        result += ('=' * 30)
+        result += (stderr)
     else:
-        print('failed!')
+        result += ('failed!')
+
+    return result
 
 def main():
     pythonfile = sys.argv[1]
@@ -46,7 +50,7 @@ def main():
     inputfile = os.path.join(dirname, 'input.txt')
     outputfile = os.path.join(dirname, 'output.txt')
 
-    check(pythonfile, inputfile, outputfile)
+    print(check(pythonfile, inputfile, outputfile))
 
 if __name__ == "__main__":
     main()
