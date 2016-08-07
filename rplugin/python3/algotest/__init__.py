@@ -8,7 +8,7 @@ class AlgoTestPlugin(object):
     def __init__(self, nvim):
         self.nvim = nvim
 
-    @neovim.command('CheckSolution', nargs='*')
+    @neovim.command('CheckSolution', nargs='*', sync=True)
     def command(self, args):
 
         if len(args) == 0:
@@ -27,7 +27,7 @@ class AlgoTestPlugin(object):
             self.append_text(buffer, result)
 
 
-    @neovim.autocmd("BufWritePost", pattern="*.py")
+    @neovim.autocmd("BufWritePost", pattern="*.py", sync=True)
     def on_bufwrite_post(self):
         filename = self.nvim.current.buffer.name
 
