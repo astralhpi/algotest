@@ -51,7 +51,7 @@ class AlgoTestPlugin(object):
         self.nvim.command('set splitright')
         self.nvim.command('vnew')
 
-        b = nvim.current.buffer
+        b = self.nvim.current.buffer
         b.name = name
         self.nvim.command("setlocal buftype=nofile noswapfile")
         return  b
