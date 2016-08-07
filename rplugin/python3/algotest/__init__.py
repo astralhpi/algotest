@@ -57,16 +57,9 @@ class AlgoTestPlugin(object):
         return  b
 
     def clear_buffer(self, buffer):
-        # line 갯수는 1개 이하로 내려가지 않음
-        while len(buffer) > 1:
-            del buffer[0]
-
-        buffer[0] = ''
+        buffer[:] = []
     
     def append_text(self, buffer, text):
         lines = text.splitlines()
-
-        for idx, line in enumerate(lines):
-            buffer.append(line)
-        
+        buffer[len(buffer):] = lines
 
