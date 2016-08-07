@@ -8,7 +8,7 @@ class AlgoTestPlugin(object):
     def __init__(self, nvim):
         self.nvim = nvim
 
-    @neovim.command('CheckSolution', nargs='*')
+    @neovim.command('CheckSolution', nargs='*', sync=True)
     def command(self, args):
 
         if len(args) == 0:
