@@ -24,7 +24,7 @@ class AlgoTestPlugin(object):
 
             result = check(filename, inputfile, outputfile)
 
-            self.append_text(buffer)
+            self.append_text(buffer, result)
 
 
     @neovim.autocmd("BufWritePost", pattern="*.py")
