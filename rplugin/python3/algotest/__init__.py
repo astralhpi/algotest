@@ -25,5 +25,12 @@ class AlgoTestPlugin(object):
 
     @neovim.autocmd("BufWritePost", pattern="*.py")
     def on_bufwrite_post(self):
-        self.nvim.command('CheckSolution')
+        filename = self.nvim.current.buffer.name
+
+        dirname = os.path.dirname(filename)
+        inputfile = os.path.join(dirname, 'input.txt')
+        outputfile = os.path.join(dirname, 'output.txt')
+
+        if all([os.path.exists(path) for path in [inputfile, outputfile]]):
+            self.nvim.command('CheckSolution')
 
