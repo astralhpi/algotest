@@ -23,7 +23,7 @@ class AlgoTestPlugin(object):
 
             self.nvim.command('echo "%s"' % result)
 
-    @neovim.autocmd("BufWritePost", pattern="*.py")
+    @neovim.autocmd("BufWritePost", pattern="*.py", sync=True)
     def on_bufwrite_post(self):
         filename = self.nvim.current.buffer.name
 
