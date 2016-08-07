@@ -64,10 +64,7 @@ class AlgoTestPlugin(object):
     def append_text(self, buffer, text):
         lines = text.splitlines()
 
-        while len(buffer) < len(lines):
-            buffer.append('')
-
-        for idx, line in enumerate(line):
-            buffer[idx] = line
+        for idx, line in enumerate(lines):
+            buffer.append(line)
         
 
