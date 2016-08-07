@@ -60,6 +60,8 @@ class AlgoTestPlugin(object):
         # line 갯수는 1개 이하로 내려가지 않음
         while len(buffer) > 1:
             del buffer[0]
+
+        buffer[0] = ''
     
     def append_text(self, buffer, text):
         lines = text.splitlines()
