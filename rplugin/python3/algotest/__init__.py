@@ -23,3 +23,7 @@ class AlgoTestPlugin(object):
 
             self.nvim.command('echo "%s"' % result)
 
+    @neovim.autocmd("BufWritePost", pattern="*.py")
+    def on_bufwrite_post(self):
+        self.nvim.command('CheckSolution')
+
