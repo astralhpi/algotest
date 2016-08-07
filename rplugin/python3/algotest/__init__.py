@@ -31,6 +31,7 @@ class AlgoTestPlugin(object):
         inputfile = os.path.join(dirname, 'input.txt')
         outputfile = os.path.join(dirname, 'output.txt')
 
+        # input/output 파일이 있는 경우에만 실행
         if all([os.path.exists(path) for path in [inputfile, outputfile]]):
-            self.nvim.command('CheckSolution')
+            self.nvim.command('CheckSolution %s' % filename)
 
